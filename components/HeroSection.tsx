@@ -13,7 +13,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   title,
   subtitle,
   backgroundImage = "/images/laas.jpg",
-  height = "50vh"
+  height = "50vh",
 }) => {
   const { isDark } = useTheme();
 
@@ -26,8 +26,10 @@ const HeroSection: React.FC<HeroSectionProps> = ({
       }}
     >
       {/* Dark overlay for better text readability */}
-      <div className={`absolute inset-0 ${isDark ? 'bg-black/60' : 'bg-black/40'}`}></div>
-      
+      <div
+        className={`absolute inset-0 ${isDark ? "bg-black/60" : "bg-black/40"}`}
+      ></div>
+
       {/* Content */}
       <div className="relative z-10 flex items-center justify-center h-full">
         <div className="text-center text-white px-4">
@@ -41,11 +43,17 @@ const HeroSection: React.FC<HeroSectionProps> = ({
           )}
         </div>
       </div>
-      
+
       {/* Optional decorative elements */}
-      <div className={`absolute bottom-0 left-0 right-0 h-16 ${isDark ? 'bg-gradient-to-t from-black/40 to-transparent' : 'bg-gradient-to-t from-black/20 to-transparent'}`}></div>
+      <div
+        className={`absolute bottom-0 left-0 right-0 h-16 ${
+          isDark
+            ? "bg-gradient-to-t from-black/40 to-transparent"
+            : "bg-gradient-to-t from-black/20 to-transparent"
+        }`}
+      ></div>
     </div>
   );
 };
 
-export default HeroSection; 
+export default HeroSection;
