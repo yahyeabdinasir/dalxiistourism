@@ -1,11 +1,11 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import { useTheme } from "@/components/ThemeProvider";
+// theme provider removed; default to light mode
 import Link from "next/link";
 
 export default function About() {
-  const { isDark } = useTheme();
+  const isDark = false;
 
   return (
     <div className={`min-h-screen ${isDark ? "bg-gray-900" : "bg-gray-50"}`}>

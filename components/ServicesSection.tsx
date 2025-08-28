@@ -265,11 +265,11 @@
 
 import React, { useState, useEffect } from "react";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
-import { useTheme } from "@/components/ThemeProvider";
+// theme provider removed; default to light mode
 
 const ServicesSection: React.FC = () => {
   const [currentImage, setCurrentImage] = useState(0);
-  const { isDark } = useTheme();
+  const isDark = false;
 
   const services = [
     "Historical and Natural Tours",

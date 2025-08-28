@@ -1,10 +1,10 @@
 'use client'
 
 import React, { useState } from "react";
-import { useTheme } from "@/components/ThemeProvider";
+// theme provider removed; default to light mode
 
 const WhatsAppChat = () => {
-  const { isDark } = useTheme();
+  const isDark = false;
   const [isHovered, setIsHovered] = useState(false);
 
   const handleWhatsAppClick = () => {

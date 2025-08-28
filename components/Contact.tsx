@@ -1,11 +1,11 @@
 'use client'
 
 import React, { useState } from "react";
-import { useTheme } from "@/components/ThemeProvider";
+// theme provider removed; default to light mode
 import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle } from "lucide-react";
 
 export default function Contact() {
-  const { isDark } = useTheme();
+  const isDark = false;
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',

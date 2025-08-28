@@ -1,11 +1,11 @@
 "use client";
 
 import React from "react";
-import { useTheme } from "@/components/ThemeProvider";
+// theme provider removed; default to light mode
 import { Star } from "lucide-react";
 
 export default function Testimonials() {
-  const { isDark } = useTheme();
+  const isDark = false;
 
   const testimonials = [
     {

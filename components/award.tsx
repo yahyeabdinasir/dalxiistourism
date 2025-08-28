@@ -1,6 +1,6 @@
 "use client";
 
-import { useTheme } from "@/components/ThemeProvider";
+// theme provider removed; default to light mode
 import {
   FaAward,
   FaMapMarkedAlt,
@@ -9,7 +9,7 @@ import {
 } from "react-icons/fa";
 
 const AwardSection = () => {
-  const { isDark } = useTheme();
+  const isDark = false;
 
   return (
     <section className={`px-6 py-16 ${isDark ? "bg-gray-900" : "bg-white"}`}>

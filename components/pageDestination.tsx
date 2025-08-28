@@ -83,10 +83,10 @@ import Link from "next/link";
 import { MapPin, Clock, ArrowRight } from "lucide-react";
 import HeroSection from "@/components/HeroSection";
 import { destinations } from "@/data/destinations";
-import { useTheme } from "@/components/ThemeProvider";
+// theme provider removed; default to light mode
 
 export default function PageDestination() {
-  const { isDark } = useTheme();
+  const isDark = false;
 
   return (
     <div className={isDark ? "bg-gray-900" : "bg-gray-50"}>

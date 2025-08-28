@@ -1,12 +1,12 @@
 "use client";
 
-import { useTheme } from "@/components/ThemeProvider";
+// theme provider removed; default to light mode
 import React from "react";
 import HeroSection from "@/components/HeroSection";
 import { CheckCircle } from "lucide-react";
 
 export default function DynamicTravelPage() {
-  const { isDark } = useTheme();
+  const isDark = false;
 
   const reasons = [
     {

@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Mail, Phone, MapPin } from "lucide-react";
-import { useTheme } from "@/components/ThemeProvider";
+// theme provider removed; default to light mode
 import Link from "next/link";
 import {
   FaFacebookF,
@@ -13,7 +13,7 @@ import {
 } from "react-icons/fa";
 
 export default function Footer() {
-  const { isDark } = useTheme();
+  const isDark = false;
   const [mounted, setMounted] = React.useState(false);
   const [year, setYear] = React.useState<number | null>(null);
 

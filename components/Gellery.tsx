@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Filter, Play, Image } from "lucide-react";
 import ImageCard from "./iImageCard";
 import ImageModal from "./ImageModel";
-import { useTheme } from "@/components/ThemeProvider";
+// theme provider removed; default to light mode
 
 export interface GalleryItem {
   id: number;
@@ -200,7 +200,7 @@ interface GalleryProps {
 }
 
 const Gallery: React.FC<GalleryProps> = ({ defaultMediaType = "all" }) => {
-  const { isDark } = useTheme();
+  const isDark = false;
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedItem, setSelectedItem] = useState<GalleryItem | null>(null);
   const [selectedIndex, setSelectedIndex] = useState(0);

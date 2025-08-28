@@ -1,6 +1,6 @@
 "use client";
-import React from "react";
-import { useTheme } from "@/components/ThemeProvider";
+import React, { useMemo } from "react";
+import Image from "next/image";
 
 interface HeroSectionProps {
   title: string;
@@ -15,29 +15,38 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   backgroundImage = "/images/laas.jpg",
   height = "50vh",
 }) => {
-  const { isDark } = useTheme();
+  // Memoize overlay classes - light mode only
+  const overlayClasses = useMemo(() => "bg-black/40", []);
+  const gradientClasses = useMemo(() => "bg-gradient-to-t from-black/20 to-transparent", []);
 
   return (
-    <div
-      className="relative w-full bg-cover bg-center bg-no-repeat"
-      style={{
-        backgroundImage: `url(${backgroundImage})`,
-        height: height,
-      }}
-    >
+    <div className="relative w-full overflow-hidden" style={{ height }}>
+      {/* Optimized background image with Next.js Image */}
+      <div className="absolute inset-0">
+        <Image
+          src={backgroundImage}
+          alt="Hero background"
+          fill
+          sizes="100vw"
+          className="object-cover"
+          priority={true}
+          quality={85}
+          placeholder="blur"
+          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+        />
+      </div>
+
       {/* Dark overlay for better text readability */}
-      <div
-        className={`absolute inset-0 ${isDark ? "bg-black/60" : "bg-black/40"}`}
-      ></div>
+      <div className={`absolute inset-0 ${overlayClasses}`}></div>
 
       {/* Content */}
       <div className="relative z-10 flex items-center justify-center h-full">
-        <div className="text-center text-white px-4">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 drop-shadow-lg">
+        <div className="text-center text-white px-4 max-w-4xl mx-auto">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 drop-shadow-lg leading-tight">
             {title}
           </h1>
           {subtitle && (
-            <p className="text-lg md:text-xl lg:text-2xl font-medium drop-shadow-md max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl lg:text-2xl font-medium drop-shadow-md max-w-2xl mx-auto leading-relaxed">
               {subtitle}
             </p>
           )}
@@ -45,13 +54,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
       </div>
 
       {/* Optional decorative elements */}
-      <div
-        className={`absolute bottom-0 left-0 right-0 h-16 ${
-          isDark
-            ? "bg-gradient-to-t from-black/40 to-transparent"
-            : "bg-gradient-to-t from-black/20 to-transparent"
-        }`}
-      ></div>
+      <div className={`absolute bottom-0 left-0 right-0 h-16 ${gradientClasses}`}></div>
     </div>
   );
 };

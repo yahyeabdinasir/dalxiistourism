@@ -2,7 +2,7 @@
 import React from "react";
 import { GalleryItem } from "./Gellery";
 import { Play } from "lucide-react";
-import { useTheme } from "@/components/ThemeProvider";
+// theme provider removed; default to light mode
 
 interface ImageCardProps {
   image: GalleryItem;
@@ -11,7 +11,7 @@ interface ImageCardProps {
 }
 
 const ImageCard: React.FC<ImageCardProps> = ({ image, index, onClick }) => {
-  const { isDark } = useTheme();
+  const isDark = false;
 
   return (
     <div
