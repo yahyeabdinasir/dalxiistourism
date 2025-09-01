@@ -189,36 +189,11 @@ export default function DynamicPage({ params }: { params: { slug: string } }) {
           </div>
         </div>
 
-        {/* Tour Highlights */}
-        <div className="mt-8">
-          <h3 className="text-xl font-semibold mb-3 text-gray-900">
-            Tour Highlights
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-700">
-            <div className="flex items-center">
-              <span className="mr-2">🏛️</span>
-              <span>Historical sites and landmarks</span>
-            </div>
-            <div className="flex items-center">
-              <span className="mr-2">🏖️</span>
-              <span>Beautiful beaches and coastal views</span>
-            </div>
-            <div className="flex items-center">
-              <span className="mr-2">🍽️</span>
-              <span>Local cuisine and dining experiences</span>
-            </div>
-            <div className="flex items-center">
-              <span className="mr-2">🛍️</span>
-              <span>Shopping and market exploration</span>
-            </div>
-          </div>
-        </div>
-
         {/* Action Buttons */}
-        <div className="mt-8 flex flex-col sm:flex-row gap-4">
+        <div className="mt-8 flex flex-col justify-center sm:flex-row gap-4">
           <Link
             href="/contact"
-            className="flex-1 text-center py-3 px-6 rounded-lg font-semibold transition-all duration-200 bg-blue-600 hover:bg-blue-700 text-white"
+            className="  text-center py-3 px-6 rounded-lg font-semibold transition-all duration-200 bg-blue-600 hover:bg-blue-700 text-white"
           >
             Book This Tour
           </Link>
