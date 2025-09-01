@@ -4,7 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppChat from "@/components/WhatsAppChat";
-import PerformanceMonitor from "@/components/PerformanceMonitor";
+// import PerformanceMonitor from "@/components/PerformanceMonitor";
 
 // Optimized font loading with better performance
 const yanone = localFont({
@@ -95,7 +95,7 @@ export default function RootLayout({
           <Navbar />
           <main className="relative z-10">{children}</main>
           <WhatsAppChat />
-          <PerformanceMonitor />
+          {/* <PerformanceMonitor /> */}
           <Footer />
         </div>
       </body>

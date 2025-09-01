@@ -1,3 +1,5 @@
+
+
 // "use client";
 
 // import React, { useState, useEffect } from "react";
@@ -16,7 +18,7 @@
 //     "Holiday/Vacation Tour",
 //     "",
 //     "Adventure Tours",
-
+    
 //   ];
 
 //   const images = [
@@ -107,6 +109,17 @@
 
 // export default ServicesSection;
 
+
+
+
+
+
+
+
+
+
+
+
 // "use client";
 
 // import React, { useState, useEffect } from "react";
@@ -170,8 +183,8 @@
 //             {services.map((service, index) => (
 //               <li
 //                 key={index}
-//                 className={`p-4 rounded-lg transition-all ${isDark ?
-//                   "hover:bg-gray-700 text-gray-300" :
+//                 className={`p-4 rounded-lg transition-all ${isDark ? 
+//                   "hover:bg-gray-700 text-gray-300" : 
 //                   "hover:bg-gray-100 text-gray-700"}`}
 //               >
 //                 <div className="flex items-center">
@@ -195,12 +208,12 @@
 //                 className="w-full h-full object-cover transition-opacity duration-500"
 //                 style={{ opacity: 1 }}
 //               />
-
+              
 //               {/* Navigation Arrows */}
 //               <button
 //                 onClick={prevImage}
-//                 className={`absolute left-4 top-1/2 -translate-y-1/2 rounded-full p-2 shadow-lg ${isDark ?
-//                   "bg-gray-700/80 text-white" :
+//                 className={`absolute left-4 top-1/2 -translate-y-1/2 rounded-full p-2 shadow-lg ${isDark ? 
+//                   "bg-gray-700/80 text-white" : 
 //                   "bg-white/90 text-gray-800"} transition-all`}
 //                 aria-label="Previous image"
 //               >
@@ -208,8 +221,8 @@
 //               </button>
 //               <button
 //                 onClick={nextImage}
-//                 className={`absolute right-4 top-1/2 -translate-y-1/2 rounded-full p-2 shadow-lg ${isDark ?
-//                   "bg-gray-700/80 text-white" :
+//                 className={`absolute right-4 top-1/2 -translate-y-1/2 rounded-full p-2 shadow-lg ${isDark ? 
+//                   "bg-gray-700/80 text-white" : 
 //                   "bg-white/90 text-gray-800"} transition-all`}
 //                 aria-label="Next image"
 //               >
@@ -222,8 +235,8 @@
 //                   <button
 //                     key={index}
 //                     onClick={() => setCurrentImage(index)}
-//                     className={`w-3 h-3 rounded-full ${currentImage === index ?
-//                       (isDark ? "bg-blue-400" : "bg-blue-600") :
+//                     className={`w-3 h-3 rounded-full ${currentImage === index ? 
+//                       (isDark ? "bg-blue-400" : "bg-blue-600") : 
 //                       (isDark ? "bg-gray-500" : "bg-gray-300")}`}
 //                     aria-label={`Go to image ${index + 1}`}
 //                   />
@@ -238,6 +251,15 @@
 // };
 
 // export default ServicesSection;
+
+
+
+
+
+
+
+
+
 
 "use client";
 
@@ -257,7 +279,11 @@ const ServicesSection = () => {
     "Accommodation Arrangements",
     "Local Cultural Experiences",
     "Fishing Village Visits",
+    "Fresh Seafood Dining",
     "Photography Tours",
+    "Customized Itineraries",
+    "Professional Tour Guides",
+    "Safety and Security Support"
   ];
 
   const images = [
@@ -265,7 +291,7 @@ const ServicesSection = () => {
     "/images/white.jpeg",
     "/images/sunset.jpeg",
     "/images/Laas.jpg",
-    "/images/berbera.jpg",
+    "/images/berbera.jpg"
   ];
 
   useEffect(() => {
@@ -274,7 +300,7 @@ const ServicesSection = () => {
 
   useEffect(() => {
     if (!isMounted) return;
-
+    
     const interval = setInterval(() => {
       setCurrentImage((prev) => (prev === images.length - 1 ? 0 : prev + 1));
     }, 3000);
@@ -292,22 +318,14 @@ const ServicesSection = () => {
   return (
     <div className="max-w-5xl mx-auto px-4 py-12">
       {/* Main Title */}
-      <h2
-        className={`text-3xl font-bold text-center mb-12 ${
-          isDark ? "text-white" : "text-gray-800"
-        }`}
-      >
+      <h2 className={`text-3xl font-bold text-center mb-12 ${isDark ? "text-white" : "text-gray-800"}`}>
         Our Premium Tour Services
       </h2>
 
       <div className="flex flex-col lg:flex-row gap-10">
         {/* Services List - Left Side */}
         <div className="lg:w-2/5">
-          <h3
-            className={`text-2xl font-semibold mb-8 ${
-              isDark ? "text-blue-400" : "text-blue-600"
-            }`}
-          >
+          <h3 className={`text-2xl font-semibold mb-8 ${isDark ? "text-blue-400" : "text-blue-600"}`}>
             What We Offer
           </h3>
 
@@ -315,18 +333,12 @@ const ServicesSection = () => {
             {services.map((service, index) => (
               <li
                 key={index}
-                className={`transition-all ${
-                  isDark
-                    ? "hover:text-blue-400 text-gray-300"
-                    : "hover:text-blue-600 text-gray-700"
-                }`}
+                className={`transition-all ${isDark ? 
+                  "hover:text-blue-400 text-gray-300" : 
+                  "hover:text-blue-600 text-gray-700"}`}
               >
                 <div className="flex items-center">
-                  <span
-                    className={`mr-3 ${
-                      isDark ? "text-blue-400" : "text-blue-600"
-                    }`}
-                  >
+                  <span className={`mr-3 ${isDark ? "text-blue-400" : "text-blue-600"}`}>
                     •
                   </span>
                   <span className="text-xl">{service}</span>
@@ -351,26 +363,22 @@ const ServicesSection = () => {
                 placeholder="blur"
                 blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxAAPwCdABmX/9k="
               />
-
+              
               {/* Navigation Arrows */}
               <button
                 onClick={prevImage}
-                className={`absolute left-4 top-1/2 -translate-y-1/2 rounded-full p-2 ${
-                  isDark
-                    ? "bg-gray-700/80 text-white"
-                    : "bg-white/90 text-gray-800"
-                } transition-all shadow-lg`}
+                className={`absolute left-4 top-1/2 -translate-y-1/2 rounded-full p-2 ${isDark ? 
+                  "bg-gray-700/80 text-white" : 
+                  "bg-white/90 text-gray-800"} transition-all shadow-lg`}
                 aria-label="Previous image"
               >
                 <FiChevronLeft className="w-6 h-6" />
               </button>
               <button
                 onClick={nextImage}
-                className={`absolute right-4 top-1/2 -translate-y-1/2 rounded-full p-2 ${
-                  isDark
-                    ? "bg-gray-700/80 text-white"
-                    : "bg-white/90 text-gray-800"
-                } transition-all shadow-lg`}
+                className={`absolute right-4 top-1/2 -translate-y-1/2 rounded-full p-2 ${isDark ? 
+                  "bg-gray-700/80 text-white" : 
+                  "bg-white/90 text-gray-800"} transition-all shadow-lg`}
                 aria-label="Next image"
               >
                 <FiChevronRight className="w-6 h-6" />
@@ -382,15 +390,9 @@ const ServicesSection = () => {
                   <button
                     key={index}
                     onClick={() => setCurrentImage(index)}
-                    className={`w-3 h-3 rounded-full ${
-                      currentImage === index
-                        ? isDark
-                          ? "bg-blue-400"
-                          : "bg-blue-600"
-                        : isDark
-                        ? "bg-gray-500"
-                        : "bg-gray-300"
-                    }`}
+                    className={`w-3 h-3 rounded-full ${currentImage === index ? 
+                      (isDark ? "bg-blue-400" : "bg-blue-600") : 
+                      (isDark ? "bg-gray-500" : "bg-gray-300")}`}
                     aria-label={`Go to image ${index + 1}`}
                   />
                 ))}

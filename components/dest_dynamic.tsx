@@ -6,63 +6,6 @@ import HeroSection from "@/components/HeroSection";
 import { useMemo } from "react";
 import { destinations } from "@/data/destinations";
 
-// Memoized component for destination info cards
-const DestinationInfoCard = ({
-  icon,
-  label,
-  value,
-}: {
-  icon: string;
-  label: string;
-  value: string;
-}) => (
-  <div className="flex items-center rounded-lg p-4 shadow-sm bg-gray-50">
-    <div className="w-12 h-12 flex items-center justify-center rounded-full shadow-md mr-4 bg-gray-100">
-      <span className="text-xl">{icon}</span>
-    </div>
-    <div>
-      <div className="text-sm text-gray-600">{label}</div>
-      <div className="text-base font-semibold text-gray-800">{value}</div>
-    </div>
-  </div>
-);
-
-// Checkmark icon component
-const CheckIcon = () => (
-  <svg
-    className="w-5 h-5 text-green-500"
-    fill="none"
-    stroke="currentColor"
-    viewBox="0 0 24 24"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="2"
-      d="M5 13l4 4L19 7"
-    ></path>
-  </svg>
-);
-
-// X mark icon component
-const XIcon = () => (
-  <svg
-    className="w-5 h-5 text-red-500"
-    fill="none"
-    stroke="currentColor"
-    viewBox="0 0 24 24"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="2"
-      d="M6 18L18 6M6 6l12 12"
-    ></path>
-  </svg>
-);
-
 export default function DynamicPage({ params }: { params: { slug: string } }) {
   // Memoize destination lookup to prevent unnecessary re-computations
   const destination = useMemo(
@@ -120,28 +63,54 @@ export default function DynamicPage({ params }: { params: { slug: string } }) {
         </div>
 
         {/* Info Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
-          <DestinationInfoCard
-            icon="⏱️"
-            label="Duration"
-            value={destination.duration || "Not specified"}
-          />
-          <DestinationInfoCard
-            icon="🚐"
-            label="Transportation"
-            value="4W Drive"
-          />
-          <DestinationInfoCard
-            icon="👥"
-            label="Tour Type"
-            value={
-              destination.group !== undefined
-                ? destination.group
-                  ? "Group Tour"
-                  : "Private Tour"
-                : "Private & Group"
-            }
-          />
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+          <div className="flex items-center rounded-lg p-4 shadow-sm bg-gray-50">
+            <div className="w-12 h-12 flex items-center justify-center rounded-full shadow-md mr-4 bg-gray-100">
+              <span className="text-xl">⏱️</span>
+            </div>
+            <div>
+              <div className="text-sm text-gray-600">Duration</div>
+              <div className="text-base font-semibold text-gray-800">
+                {destination.duration || "Not specified"}
+              </div>
+            </div>
+          </div>
+
+          <div className="flex items-center rounded-lg p-4 shadow-sm bg-gray-50">
+            <div className="w-12 h-12 flex items-center justify-center rounded-full shadow-md mr-4 bg-gray-100">
+              <span className="text-xl">🚐</span>
+            </div>
+            <div>
+              <div className="text-sm text-gray-600">Transportation</div>
+              <div className="text-base font-semibold text-gray-800">
+                4W Drive
+              </div>
+            </div>
+          </div>
+
+          <div className="flex items-center rounded-lg p-4 shadow-sm bg-gray-50">
+            <div className="w-12 h-12 flex items-center justify-center rounded-full shadow-md mr-4 bg-gray-100">
+              <span className="text-xl">🚶</span>
+            </div>
+            <div>
+              <div className="text-sm text-gray-600">Tour Type</div>
+              <div className="text-base font-semibold text-gray-800">
+                Individual Tour
+              </div>
+            </div>
+          </div>
+
+          <div className="flex items-center rounded-lg p-4 shadow-sm bg-gray-50">
+            <div className="w-12 h-12 flex items-center justify-center rounded-full shadow-md mr-4 bg-gray-100">
+              <span className="text-xl">👥</span>
+            </div>
+            <div>
+              <div className="text-sm text-gray-600">Tour Type</div>
+              <div className="text-base font-semibold text-gray-800">
+                Group Tour
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Description */}
@@ -155,59 +124,86 @@ export default function DynamicPage({ params }: { params: { slug: string } }) {
         </div>
 
         {/* Included/Excluded Sections */}
-        <div className="mt-8 space-y-6">
-          <div>
-            <h3 className="text-xl font-semibold mb-3 text-gray-900">
+        <div className="space-y-8 mb-8">
+          <div className="rounded-lg p-6 shadow-sm bg-gray-50">
+            <h3 className="text-xl font-semibold mb-4 text-blue-600">
               What's Included
             </h3>
-            <ul className="space-y-2 text-gray-700">
-              {destination.included?.map((item, index) => (
-                <li key={index} className="flex items-start">
-                  <span className="mr-2 mt-0.5">
-                    <CheckIcon />
-                  </span>
-                  <span>{item}</span>
-                </li>
-              )) || <li className="text-gray-500">No information available</li>}
+            <ul className="space-y-2 text-gray-600">
+              {destination.included && destination.included.length > 0 ? (
+                destination.included.map((item, index) => (
+                  <li key={index}>{item}</li>
+                ))
+              ) : (
+                <>
+                  <li>Professional tour guide</li>
+                  <li>Transportation (4WD vehicle)</li>
+                  <li>Accommodation (3-star hotels)</li>
+                  <li>Daily breakfast</li>
+                  <li>Lunch and dinner</li>
+                  <li>Night events (qaaci)</li>
+                  <li>Entrance fees to attractions</li>
+                  <li>Local cultural experiences</li>
+                </>
+              )}
             </ul>
           </div>
 
-          <div>
-            <h3 className="text-xl font-semibold mb-3 text-gray-900">
-              What's Not Included
+          <div className="rounded-lg p-6 shadow-sm bg-gray-50">
+            <h3 className="text-xl font-semibold mb-4 text-blue-600">
+              What's Excluded
             </h3>
-            <ul className="space-y-2 text-gray-700">
-              {destination.excluded?.map((item, index) => (
-                <li key={index} className="flex items-start">
-                  <span className="mr-2 mt-0.5">
-                    <XIcon />
-                  </span>
-                  <span>{item}</span>
-                </li>
-              )) || <li className="text-gray-500">No information available</li>}
+            <ul className="space-y-2 text-gray-600">
+              {destination.excluded && destination.excluded.length > 0 ? (
+                destination.excluded.map((item, index) => (
+                  <li key={index}>{item}</li>
+                ))
+              ) : (
+                <>
+                  <li>International flights</li>
+                  <li>Travel insurance</li>
+                  <li>Personal expenses</li>
+                  <li>Lunch and dinner</li>
+                  <li>Optional activities</li>
+                  <li>Tips and gratuities</li>
+                </>
+              )}
             </ul>
           </div>
         </div>
+        {/* 
+        {/* Tour Highlights */}
+        {/* <div className="mt-8">
+          <h3 className="text-xl font-semibold mb-3 text-gray-900">
+            Tour Highlights
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-700">
+            <div className="flex items-center">
+              <span className="mr-2">🏛️</span>
+              <span>Historical sites and landmarks</span>
+            </div>
+            <div className="flex items-center">
+              <span className="mr-2">🏖️</span>
+              <span>Beautiful beaches and coastal views</span>
+            </div>
+            <div className="flex items-center">
+              <span className="mr-2">🍽️</span>
+              <span>Local cuisine and dining experiences</span>
+            </div>
+            <div className="flex items-center">
+              <span className="mr-2">🛍️</span>
+              <span>Shopping and market exploration</span>
+            </div>
+          </div>
+        </div> */}
 
-        {/* Action Buttons */}
-        <div className="mt-8 flex flex-col justify-center sm:flex-row gap-4">
+        {/* Action Button */}
+        <div className="flex justify-center m-10">
           <Link href="/contact">
-            <button
-              className={`px-8 py-3 rounded-full font-semibold text-lg ${
-                true
-                  ? "bg-blue-600 hover:bg-blue-700"
-                  : "bg-blue-600 hover:bg-blue-700"
-              } text-white transition duration-300`}
-            >
-              Get in Touch
+            <button className="px-8 py-3 rounded-full font-semibold text-lg bg-blue-600 hover:bg-blue-700 text-white transition duration-300">
+              Book Now
             </button>
           </Link>
-          {/* <Link
-            href="/destinations"
-            className="flex-1 text-center py-3 px-6 rounded-lg font-semibold border-2 transition-all duration-200 border-gray-300 text-gray-700 hover:bg-gray-50"
-          >
-            View All Destinations
-          </Link> */}
         </div>
       </div>
     </div>

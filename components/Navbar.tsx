@@ -60,8 +60,8 @@ export default function Navbar() {
           },
           {
             id: "puntland",
-            label: "About Puntland",
-            href: "/about/about-puntland",
+            label: "why-travel-with-us",
+            href: "/about/why-travel-with-us",
           },
           {
             id: "testmonial",
