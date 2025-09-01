@@ -191,11 +191,16 @@ export default function DynamicPage({ params }: { params: { slug: string } }) {
 
         {/* Action Buttons */}
         <div className="mt-8 flex flex-col justify-center sm:flex-row gap-4">
-          <Link
-            href="/contact"
-            className="  text-center py-3 px-6 rounded-lg font-semibold transition-all duration-200 bg-blue-600 hover:bg-blue-700 text-white"
-          >
-            Book This Tour
+          <Link href="/contact">
+            <button
+              className={`px-8 py-3 rounded-full font-semibold text-lg ${
+                true
+                  ? "bg-blue-600 hover:bg-blue-700"
+                  : "bg-blue-600 hover:bg-blue-700"
+              } text-white transition duration-300`}
+            >
+              Get in Touch
+            </button>
           </Link>
           {/* <Link
             href="/destinations"

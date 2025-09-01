@@ -91,7 +91,7 @@ const galleryItems: GalleryItem[] = [
   {
     id: 7,
     src: "/images/som.jpg",
-    title: "Saxare Market",
+    title: "saxare Market",
     category: "Culture",
     location: "Somalia",
     date: "September 2023",
