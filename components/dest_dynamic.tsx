@@ -66,7 +66,10 @@ const XIcon = () => (
 export default function DynamicPage({ params }: { params: { slug: string } }) {
   // Memoize destination lookup to prevent unnecessary re-computations
   const destination = useMemo(
-    () => destinations.find((d) => d.slug.toLowerCase() === params.slug.toLowerCase()),
+    () =>
+      destinations.find(
+        (d) => d.slug.toLowerCase() === params.slug.toLowerCase()
+      ),
     [params.slug]
   );
 
@@ -131,7 +134,13 @@ export default function DynamicPage({ params }: { params: { slug: string } }) {
           <DestinationInfoCard
             icon="👥"
             label="Tour Type"
-            value={destination.group !== undefined ? (destination.group ? "Group Tour" : "Private Tour") : "Private & Group"}
+            value={
+              destination.group !== undefined
+                ? destination.group
+                  ? "Group Tour"
+                  : "Private Tour"
+                : "Private & Group"
+            }
           />
         </div>
 
@@ -159,9 +168,7 @@ export default function DynamicPage({ params }: { params: { slug: string } }) {
                   </span>
                   <span>{item}</span>
                 </li>
-              )) || (
-                <li className="text-gray-500">No information available</li>
-              )}
+              )) || <li className="text-gray-500">No information available</li>}
             </ul>
           </div>
 
@@ -177,9 +184,7 @@ export default function DynamicPage({ params }: { params: { slug: string } }) {
                   </span>
                   <span>{item}</span>
                 </li>
-              )) || (
-                <li className="text-gray-500">No information available</li>
-              )}
+              )) || <li className="text-gray-500">No information available</li>}
             </ul>
           </div>
         </div>
@@ -217,12 +222,12 @@ export default function DynamicPage({ params }: { params: { slug: string } }) {
           >
             Book This Tour
           </Link>
-          <Link
+          {/* <Link
             href="/destinations"
             className="flex-1 text-center py-3 px-6 rounded-lg font-semibold border-2 transition-all duration-200 border-gray-300 text-gray-700 hover:bg-gray-50"
           >
             View All Destinations
-          </Link>
+          </Link> */}
         </div>
       </div>
     </div>
