@@ -1,6 +1,12 @@
 "use client";
 
-import React, { useState, useEffect, useRef, useCallback, useMemo } from "react";
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+  useMemo,
+} from "react";
 import { Phone, Menu, X, Facebook, Instagram } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -9,66 +15,71 @@ import Image from "next/image";
 // Throttle function for scroll events
 const throttle = (func: Function, limit: number) => {
   let inThrottle: boolean;
-  return function(this: any, ...args: any[]) {
+  return function (this: any, ...args: any[]) {
     if (!inThrottle) {
       func.apply(this, args);
       inThrottle = true;
-      setTimeout(() => inThrottle = false, limit);
+      setTimeout(() => (inThrottle = false), limit);
     }
-  }
+  };
 };
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
-  const [mobileOpenDropdown, setMobileOpenDropdown] = useState<string | null>(null);
+  const [mobileOpenDropdown, setMobileOpenDropdown] = useState<string | null>(
+    null
+  );
   const pathname = usePathname();
   const menuRef = useRef<HTMLDivElement>(null);
 
   // Memoize navItems to prevent unnecessary re-renders
-  const navItems = useMemo(() => [
-    { id: "home", label: "Home", href: "/" },
-    { id: "destinations", label: "Destinations", href: "/destinations" },
-    {
-      id: "gallery",
-      label: "Gallery",
-      href: "/Images",
-      subItems: [
-        { id: "videos", label: "Videos", href: "/Images/videos" },
-        { id: "photos", label: "Photos", href: "/Images/photos" },
-      ],
-    },
-    {
-      id: "about",
-      label: "About",
-      href: "/about",
-      subItems: [
-        {
-          id: "why-travel",
-          label: "about-us",
-          href: "/about/about-us",
-        },
-        {
-          id: "puntland",
-          label: "About Puntland",
-          href: "/about/about-puntland",
-        },
-        {
-          id: "testmonial",
-          label: "testmonial",
-          href: "/about/testmonial",
-        },
-      ],
-    },
-    { id: "contact", label: "Contact", href: "/contact" },
-  ], []);
+  const navItems = useMemo(
+    () => [
+      { id: "home", label: "Home", href: "/" },
+      { id: "destinations", label: "Destinations", href: "/destinations" },
+      {
+        id: "gallery",
+        label: "Gallery",
+        href: "/Images",
+        subItems: [
+          { id: "videos", label: "Videos", href: "/Images/videos" },
+          { id: "photos", label: "Photos", href: "/Images/photos" },
+        ],
+      },
+      {
+        id: "about",
+        label: "About",
+        href: "/about",
+        subItems: [
+          {
+            id: "why-travel",
+            label: "about-us",
+            href: "/about/about-us",
+          },
+          {
+            id: "puntland",
+            label: "About Puntland",
+            href: "/about/about-puntland",
+          },
+          {
+            id: "testmonial",
+            label: "testmonial",
+            href: "/about/testmonial",
+          },
+        ],
+      },
+      { id: "contact", label: "Contact", href: "/contact" },
+    ],
+    []
+  );
 
   // Optimized scroll handler with throttling
   const handleScroll = useCallback(
     throttle(() => {
       const currentScrollY = window.scrollY;
-      
+
       if (currentScrollY <= 100) {
         setIsVisible(true);
       } else if (currentScrollY > lastScrollY) {
@@ -76,7 +87,7 @@ export default function Navbar() {
       } else {
         setIsVisible(true);
       }
-      
+
       setLastScrollY(currentScrollY);
     }, 100), // Throttle to 100ms
     [lastScrollY]
@@ -103,27 +114,31 @@ export default function Navbar() {
   }, [handleClickOutside]);
 
   // Memoized active state checker
-  const isActive = useCallback((href: string) => {
-    if (href === "/") {
-      return pathname === "/";
-    }
-    return pathname.startsWith(href);
-  }, [pathname]);
+  const isActive = useCallback(
+    (href: string) => {
+      if (href === "/") {
+        return pathname === "/";
+      }
+      return pathname.startsWith(href);
+    },
+    [pathname]
+  );
 
   const toggleMobileDropdown = useCallback((id: string) => {
-    setMobileOpenDropdown(prev => prev === id ? null : id);
+    setMobileOpenDropdown((prev) => (prev === id ? null : id));
   }, []);
 
   const toggleMenu = useCallback(() => {
-    setIsMenuOpen(prev => !prev);
+    setIsMenuOpen((prev) => !prev);
   }, []);
 
   // Memoized navbar classes - light mode only
   const navbarClasses = useMemo(() => {
     const baseClasses = "w-full z-50 transition-all duration-300 fixed top-0";
     const visibilityClasses = isVisible ? "translate-y-0" : "-translate-y-full";
-    const themeClasses = "bg-white/95 backdrop-blur-sm border-b border-gray-200";
-    
+    const themeClasses =
+      "bg-white/95 backdrop-blur-sm border-b border-gray-200";
+
     return `${baseClasses} ${visibilityClasses} ${themeClasses}`;
   }, [isVisible]);
 
@@ -189,7 +204,7 @@ export default function Navbar() {
                 {/* Social Icons */}
                 <div className="flex space-x-4">
                   <a
-                    href="https://www.facebook.com"
+                    href="https://www.facebook.com/Dalxiistourism"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="p-2 rounded-full transition-colors duration-200 text-gray-700 hover:text-gray-900 hover:bg-gray-100"
@@ -197,7 +212,7 @@ export default function Navbar() {
                     <Facebook className="h-5 w-5" />
                   </a>
                   <a
-                    href="https://www.instagram.com"
+                    href="https://www.instagram.com/dalxiis_tourism/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="p-2 rounded-full transition-colors duration-200 text-gray-700 hover:text-gray-900 hover:bg-gray-100"
@@ -210,7 +225,7 @@ export default function Navbar() {
                 <div className="flex items-center space-x-2">
                   <Phone className="h-4 w-4 text-gray-600" />
                   <span className="text-sm font-medium text-gray-700">
-                    +252 61 1234567
+                    +252 907 797 695
                   </span>
                 </div>
               </div>
@@ -255,7 +270,7 @@ export default function Navbar() {
                   >
                     {item.label}
                   </Link>
-                  
+
                   {item.subItems && (
                     <div className="ml-4">
                       <button
@@ -264,7 +279,7 @@ export default function Navbar() {
                       >
                         {mobileOpenDropdown === item.id ? "▼" : "▶"} Submenu
                       </button>
-                      
+
                       {mobileOpenDropdown === item.id && (
                         <div className="ml-4 space-y-1">
                           {item.subItems.map((sub) => (
@@ -290,13 +305,13 @@ export default function Navbar() {
                   )}
                 </div>
               ))}
-              
+
               {/* Mobile Contact Info */}
               <div className="px-3 py-2 border-t border-gray-200">
                 <div className="flex items-center space-x-2">
                   <Phone className="h-4 w-4 text-gray-600" />
                   <span className="text-sm text-gray-600">
-                    +252 61 1234567
+                    +252 907 797 695
                   </span>
                 </div>
               </div>

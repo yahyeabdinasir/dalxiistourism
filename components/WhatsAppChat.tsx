@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from "react";
+import Image from "next/image";
 // theme provider removed; default to light mode
 
 const WhatsAppChat = () => {
@@ -52,11 +53,15 @@ const WhatsAppChat = () => {
             : 'bg-white border-gray-200'
         }`}>
           <div className="flex items-center mb-3">
-            <img 
-              src="/images/dalxiis2.png" 
-              alt="Dalxiis Tourism" 
-              className="w-10 h-10 rounded-full mr-3"
-            />
+            <div className="relative w-10 h-10 rounded-full mr-3 overflow-hidden">
+              <Image 
+                src="/images/dalxiis2.png" 
+                alt="Dalxiis Tourism" 
+                fill
+                className="object-cover"
+                sizes="40px"
+              />
+            </div>
             <div>
               <h4 className={`font-semibold ${
                 isDark ? 'text-white' : 'text-gray-800'

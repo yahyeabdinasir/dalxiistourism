@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
+import Image from "next/image";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { GalleryItem } from "./Gellery";
 
@@ -12,7 +13,7 @@ interface ImageModalProps {
   onNext?: () => void;
 }
 
-const ImageModal: React.FC<ImageModalProps> = ({ 
+const ImageModal: React.FC<ImageModalProps> = ({
   image, 
   onClose, 
   currentIndex = 1, 
@@ -50,7 +51,7 @@ const ImageModal: React.FC<ImageModalProps> = ({
 
   return (
     <div
-      className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4"
+      className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4"
       onClick={handleBackdropClick}
     >
       <div className="relative max-w-6xl w-full max-h-[90vh] flex items-center justify-center">
@@ -99,11 +100,17 @@ const ImageModal: React.FC<ImageModalProps> = ({
               Your browser does not support the video tag.
             </video>
           ) : (
-            <img
-              src={image.src}
-              alt={image.title}
-              className="max-w-full max-h-full object-contain"
-            />
+            <div className="relative w-full h-full max-w-4xl max-h-[80vh]">
+              <Image
+                src={image.src}
+                alt={image.title}
+                fill
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 1200px"
+                className="object-contain"
+                quality={95}
+                priority
+              />
+            </div>
           )}
         </div>
       </div>

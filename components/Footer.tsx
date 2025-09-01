@@ -34,7 +34,7 @@ export default function Footer() {
       <div className={`p-4 ${isDark ? "bg-gray-800" : "bg-blue-600"}`}>
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-8">
           <a
-            href="https://facebook.com"
+            href="https://www.facebook.com/Dalxiistourism"
             target="_blank"
             rel="noopener noreferrer"
             className={`flex items-center ${
@@ -45,7 +45,7 @@ export default function Footer() {
             <span>Facebook</span>
           </a>
           <a
-            href="https://instagram.com"
+            href="https://www.instagram.com/dalxiis_tourism/"
             target="_blank"
             rel="noopener noreferrer"
             className={`flex items-center ${
@@ -56,7 +56,7 @@ export default function Footer() {
             <span>Instagram</span>
           </a>
           <a
-            href="https://wa.me/252617889655"
+            href="https://wa.me/+252 907 797 695"
             target="_blank"
             rel="noopener noreferrer"
             className={`flex items-center ${
@@ -100,7 +100,7 @@ export default function Footer() {
                     isDark ? "text-orange-400" : "text-orange-600"
                   }`}
                 />
-                <span>+252 907889655</span>
+                <span>+252 907 797 695</span>
               </div>
               <div
                 className={`flex items-center ${
@@ -173,7 +173,7 @@ export default function Footer() {
             </h4>
             <div className="flex flex-col gap-3">
               <a
-                href="https://facebook.com"
+                href="https://www.facebook.com/Dalxiistourism"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`flex items-center gap-2 ${
@@ -195,7 +195,7 @@ export default function Footer() {
                 <span>Twitter</span>
               </a> */}
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/dalxiis_tourism/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`flex items-center gap-2 ${
@@ -221,7 +221,7 @@ export default function Footer() {
                 <span>WhatsApp</span>
               </a>
               <a
-                href="https://tiktok.com"
+                href="https://www.tiktok.com/@dalxiistouris"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`flex items-center gap-2 ${

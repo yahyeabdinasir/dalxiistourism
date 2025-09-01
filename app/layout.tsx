@@ -80,7 +80,7 @@ export default function RootLayout({
       <head>
         {/* Preload critical resources */}
         <link rel="preload" href="/images/dalxiis2.png" as="image" />
-        <link rel="preload" href="/images/laas.jpg" as="image" />
+        <link rel="preload" href="/images/Laas.jpg" as="image" />
         
         {/* DNS prefetch for external resources */}
         <link rel="dns-prefetch" href="//www.facebook.com" />
@@ -93,11 +93,10 @@ export default function RootLayout({
       <body>
         <div className="min-h-screen relative bg-white text-gray-900">
           <Navbar />
-    
-             <main className="relative z-10">{children}</main>
+          <main className="relative z-10">{children}</main>
           <WhatsAppChat />
           <PerformanceMonitor />
-           <Footer />  
+          <Footer />
         </div>
       </body>
     </html>

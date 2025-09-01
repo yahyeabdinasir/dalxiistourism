@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Image from "next/image";
 import { GalleryItem } from "./Gellery";
 import { Play } from "lucide-react";
 // theme provider removed; default to light mode
@@ -25,11 +26,16 @@ const ImageCard: React.FC<ImageCardProps> = ({ image, index, onClick }) => {
     >
       {/* Image or Video Thumbnail */}
       <div className="w-48 h-64 overflow-hidden relative">
-        <img
+        <Image
           src={image.type === "video" && image.thumbnail ? image.thumbnail : image.src}
           alt={image.title}
-          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+          fill
+          sizes="(max-width: 640px) 192px, 192px"
+          className="object-cover transition-transform duration-300 group-hover:scale-110"
           loading="lazy"
+          quality={85}
+          placeholder="blur"
+          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
         />
 
         {/* Video Play Button Overlay */}

@@ -264,39 +264,48 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 // theme provider removed; default to light mode
 
-const ServicesSection: React.FC = () => {
-  const [currentImage, setCurrentImage] = useState(0);
+const ServicesSection = () => {
   const isDark = false;
+  const [currentImage, setCurrentImage] = useState(0);
+  const [isMounted, setIsMounted] = useState(false);
 
   const services = [
-    "Historical and Natural Tours",
-    "Festivals Ceremonies Tour",
-    "Package Tours",
-    "Cultural Tours",
-    "Holiday/Vacation Tour",
-    "Adventure Tours",
-    "Wildlife Safaris",
-    "Desert Expeditions"
+    "Guided Tours to Puntland's Beautiful Beaches",
+    "Transportation Services (4WD Vehicles)",
+    "Accommodation Arrangements",
+    "Local Cultural Experiences",
+    "Fishing Village Visits",
+    "Fresh Seafood Dining",
+    "Photography Tours",
+    "Customized Itineraries",
+    "Professional Tour Guides",
+    "Safety and Security Support"
   ];
 
   const images = [
-    "/images/wasiir.jpg",
-    "/images/drivers.jpg",
-    "/images/luudo.jpg",
-    "/images/kismayo.jpg",
-    "/images/berbera.jpg",
-    "/images/garowe.png"
+    "/images/caluula1.jpg",
+    "/images/white.jpeg",
+    "/images/sunset.jpeg",
+    "/images/Laas.jpg",
+    "/images/berbera.jpg"
   ];
 
   useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isMounted) return;
+    
     const interval = setInterval(() => {
       setCurrentImage((prev) => (prev === images.length - 1 ? 0 : prev + 1));
     }, 3000);
     return () => clearInterval(interval);
-  }, [images.length]);
+  }, [images.length, isMounted]);
 
   const nextImage = () => {
     setCurrentImage((prev) => (prev === images.length - 1 ? 0 : prev + 1));
@@ -343,11 +352,16 @@ const ServicesSection: React.FC = () => {
         <div className="lg:w-3/5 relative group h-[480px]">
           <div className="overflow-hidden h-full rounded-xl">
             <div className="relative h-full w-full">
-              <img
+              <Image
                 src={images[currentImage]}
                 alt="Tour service"
-                className="w-full h-full object-cover transition-opacity duration-500"
-                style={{ opacity: 1 }}
+                fill
+                sizes="(max-width: 1024px) 100vw, 60vw"
+                className="object-cover transition-opacity duration-500"
+                quality={85}
+                priority={currentImage === 0}
+                placeholder="blur"
+                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxAAPwCdABmX/9k="
               />
               
               {/* Navigation Arrows */}

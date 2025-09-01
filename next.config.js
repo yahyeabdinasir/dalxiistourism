@@ -6,9 +6,18 @@ const nextConfig = {
     optimizeCss: false,
     optimizePackageImports: ["lucide-react", "framer-motion", "react-icons"],
     serverComponentsExternalPackages: [],
+    // Enable modern image formats
+    turbo: {
+      rules: {
+        '*.svg': {
+          loaders: ['@svgr/webpack'],
+          as: '*.js',
+        },
+      },
+    },
   },
 
-  // Image optimization
+  // Enhanced Image optimization
   images: {
     remotePatterns: [
       {
@@ -42,6 +51,42 @@ const nextConfig = {
   // Output optimization
   output: 'standalone',
   trailingSlash: false,
+
+  // Webpack optimizations
+  webpack: (config, { dev, isServer }) => {
+    // Optimize images in production
+    if (!dev && !isServer) {
+      config.module.rules.push({
+        test: /\.(png|jpe?g|gif|svg)$/i,
+        use: [
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              mozjpeg: {
+                progressive: true,
+                quality: 85,
+              },
+              optipng: {
+                enabled: false,
+              },
+              pngquant: {
+                quality: [0.65, 0.90],
+                speed: 4,
+              },
+              gifsicle: {
+                interlaced: false,
+              },
+              webp: {
+                quality: 85,
+              },
+            },
+          },
+        ],
+      });
+    }
+
+    return config;
+  },
 
   // Headers for better caching and security
   async headers() {

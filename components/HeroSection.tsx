@@ -1,6 +1,6 @@
 "use client";
 import React, { useMemo } from "react";
-import Image from "next/image";
+import OptimizedImage from "./OptimizedImage";
 
 interface HeroSectionProps {
   title: string;
@@ -12,18 +12,21 @@ interface HeroSectionProps {
 const HeroSection: React.FC<HeroSectionProps> = ({
   title,
   subtitle,
-  backgroundImage = "/images/laas.jpg",
+  backgroundImage = "/images/Laas.jpg",
   height = "50vh",
 }) => {
   // Memoize overlay classes - light mode only
   const overlayClasses = useMemo(() => "bg-black/40", []);
-  const gradientClasses = useMemo(() => "bg-gradient-to-t from-black/20 to-transparent", []);
+  const gradientClasses = useMemo(
+    () => "bg-gradient-to-t from-black/20 to-transparent",
+    []
+  );
 
   return (
     <div className="relative w-full overflow-hidden" style={{ height }}>
       {/* Optimized background image with Next.js Image */}
       <div className="absolute inset-0">
-        <Image
+        <OptimizedImage
           src={backgroundImage}
           alt="Hero background"
           fill
@@ -32,7 +35,6 @@ const HeroSection: React.FC<HeroSectionProps> = ({
           priority={true}
           quality={85}
           placeholder="blur"
-          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
         />
       </div>
 
@@ -54,7 +56,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({
       </div>
 
       {/* Optional decorative elements */}
-      <div className={`absolute bottom-0 left-0 right-0 h-16 ${gradientClasses}`}></div>
+      <div
+        className={`absolute bottom-0 left-0 right-0 h-16 ${gradientClasses}`}
+      ></div>
     </div>
   );
 };
