@@ -29,9 +29,10 @@ const ImageCard: React.FC<ImageCardProps> = ({ image, index, onClick }) => {
         <Image
           src={image.type === "video" && image.thumbnail ? image.thumbnail : image.src}
           alt={image.title}
-          fill
+          width={192}
+          height={256}
           sizes="(max-width: 640px) 192px, 192px"
-          className="object-cover transition-transform duration-300 group-hover:scale-110"
+          className="object-cover transition-transform duration-300 group-hover:scale-110 w-full h-full"
           loading="lazy"
           quality={85}
           placeholder="blur"

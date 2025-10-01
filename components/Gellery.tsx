@@ -275,6 +275,7 @@ const Gallery: React.FC<GalleryProps> = ({ defaultMediaType = "all" }) => {
     }
   };
 
+
   return (
     <div
       className={`min-h-screen ${
