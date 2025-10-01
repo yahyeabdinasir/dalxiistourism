@@ -10,7 +10,7 @@ const WhatsAppChat = () => {
 
   const handleWhatsAppClick = () => {
     const message = encodeURIComponent("Hi there! How can we help you plan your next adventure?");
-    const phoneNumber = "+252907889655";
+    const phoneNumber = "+252 907 797 695";
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
     window.open(whatsappUrl, '_blank');
   };

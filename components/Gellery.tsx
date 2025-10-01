@@ -154,43 +154,7 @@ const galleryItems: GalleryItem[] = [
     tags: ["women", "traditional", "culture"],
     type: "image",
   },
-  // Sample videos (you can replace with actual video URLs)
-  // {
-  //   id: 13,
-  //   src: "https://www.facebook.com/share/r/17SVNqUGBp/",
-  //   title: "Beach Tour",
-  //   category: "Nature",
-  //   location: "Somalia Coast",
-  //   date: "March 2024",
-  //   description: "Virtual tour of our beautiful coastal destinations.",
-  //   tags: ["beach", "tour", "coast"],
-  //   type: "video",
-  //   // thumbnail: "/images/forground.jpeg",
-  // },
-  // {
-  //   id: 14,
-  //   src: "https://www.facebook.com/share/r/179Tq52zPF/",
-  //   title: "Cultural Festival",
-  //   category: "Culture",
-  //   location: "Somalia",
-  //   date: "February 2024",
-  //   description: "Traditional cultural festival celebrations.",
-  //   tags: ["festival", "culture", "celebration"],
-  //   type: "video",
-  //   // thumbnail: "/images/koko.jpeg",
-  // },
-  // {
-  //   id: 15,
-  //   src: "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_5mb.mp4",
-  //   title: "Desert Adventure",
-  //   category: "Adventure",
-  //   location: "Somalia Desert",
-  //   date: "January 2024",
-  //   description: "Adventure through the vast desert landscapes.",
-  //   tags: ["desert", "adventure", "landscape"],
-  //   type: "video",
-  //   // thumbnail: "/images/sleep.jpeg",
-  // },
+ 
 ];
 
 const categories = ["All", "Nature", "Culture", "Adventure", "People"];
@@ -274,7 +238,6 @@ const Gallery: React.FC<GalleryProps> = ({ defaultMediaType = "all" }) => {
         return "Discover breathtaking moments from our adventures around the world";
     }
   };
-
 
   return (
     <div
